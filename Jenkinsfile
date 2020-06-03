@@ -1,14 +1,12 @@
 pipeline {
       agent any
-      tools {
-            maven "3.6.3"
-      }
+   
       stages {
           stage('build') {
+                def mvnhome = tool name: 'maven-3.6.3', type: 'maven'
                 steps {
-                    sh "mvn --version"
-                     sh "mvn clean install"
-                }
+                      sh "${mvnhome}/bin/mvn --version"
+                   }
             }
       }
 }
