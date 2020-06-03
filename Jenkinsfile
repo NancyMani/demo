@@ -1,8 +1,13 @@
 pipeline {
-      agent any 
-            tools { 
-                  maven "3.6.3"
-            }
+      agent { 
+            docker {
+                   image 'maven:3-alpine' 
+                   args '-v /root/.m2:/root/.m2' 
+              }
+      }
+         //   tools { 
+           //       maven "3.6.3"
+           // }
      
            // environment { 
        //             mvnhome = tool name: 'maven-3.6.3', type: 'maven'
@@ -12,7 +17,7 @@ pipeline {
           stage('build') {
                 
                 steps {
-                      sh (" $mvnhome /bin/mvn --version")
+                      sh "mvn --version"
                    }
             }
       }
