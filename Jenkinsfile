@@ -22,7 +22,12 @@ pipeline {
                    }
             }
             stage('test on dockerfile') { 
-                  agent { Dockerfile true }
+                  agent { 
+                        Dockerfile true 
+                  }
+                  steps { 
+                        echo " detected dockerfile"
+                  }
             }
       }
  }
