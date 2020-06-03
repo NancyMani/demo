@@ -1,6 +1,5 @@
 pipeline {
       agent { 
-            Dockerfile true
             docker {
                    image 'maven:3-alpine' 
                    args '-v /root/.m2:/root/.m2' 
@@ -22,5 +21,8 @@ pipeline {
                       sh "mvn -B -DskipTests clean package"
                    }
             }
+            stage('test on dockerfile') { 
+                  agent { Dockerfile true }
+            }
       }
-}
+ }
