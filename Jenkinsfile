@@ -1,5 +1,5 @@
 pipeline {
-      agent any{ 
+      agent { 
             environment { 
              mvnhome = tool name: 'maven-3.6.3', type: 'maven'
             }
