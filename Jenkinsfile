@@ -1,11 +1,10 @@
 pipeline {
-      agent any { 
+      agent any 
             tools { 
                   maven "3.6.3"
             }
-      }
-      
-     // environment { 
+     
+           // environment { 
        //             mvnhome = tool name: 'maven-3.6.3', type: 'maven'
          //   }    
    
