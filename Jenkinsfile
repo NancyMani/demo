@@ -14,7 +14,7 @@ pipeline {
                   }
             }
             stage('build image and push image') { 
-                 agent { dockerfile true }
+               //  agent { dockerfile true }
                   steps { 
                         echo "Building and pushing the docker image into my dockerhub"
                         script { 
