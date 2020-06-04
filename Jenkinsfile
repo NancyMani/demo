@@ -13,9 +13,9 @@ pipeline {
                   }
             }
             stage('build image') { 
-                  agent { dockerfile true }
+                //  agent { dockerfile true }
                   steps { 
-                        sh "mvn --version"
+                        sh "docker build -t nancyrheniusbenny/demo ."
                   }
             }
       }
