@@ -18,7 +18,7 @@ pipeline {
                         echo "Building and pushing the docker image into my dockerhub"
                         script { 
                               docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') { 
-                              def app = docker.build("nancyrheniusbenny/demo", '.').push()
+                              def app = docker.build("nancyrheniusbenny/demo .").push()
                               }
                         }
                   }
