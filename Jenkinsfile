@@ -26,9 +26,8 @@ pipeline {
                              // def app = docker.build("nancyrheniusbenny/demo", '.')
                               //app.push()
                                docker.build registry + ":$BUILD_NUMBER"
-                              }
-                        }
-                  }
-            }
-      }
+                          }
+                     }
+               }
+         }
 }
