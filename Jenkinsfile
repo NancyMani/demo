@@ -1,4 +1,3 @@
-//def commit_id
 pipeline { 
       agent { 
             docker { 
@@ -7,15 +6,7 @@ pipeline {
             }
       }
       stages { 
-      //      stage('clone repo') { 
-      //            steps { 
-     //                   checkout scm
-       //                 script {
-         //                     sh "git rev-parse --short HEAD > .git/commit-id"                        
-           //                   commit_id = readFile('.git/commit-id').trim()
-             //           }
-             //     }
-           // }
+     
             stage('maven build') { 
                   steps { 
                         sh "mvn -B -DskipTests clean package"
@@ -23,7 +14,7 @@ pipeline {
                   }
             }
             stage('build image and push image') { 
-                //  agent { dockerfile true }
+                 agent { dockerfile true }
                   steps { 
                         echo "Building and pushing the docker image into my dockerhub"
                         script { 
