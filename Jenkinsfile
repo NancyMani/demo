@@ -1,4 +1,4 @@
-def commit_id
+//def commit_id
 pipeline { 
       agent { 
             docker { 
@@ -7,15 +7,15 @@ pipeline {
             }
       }
       stages { 
-            stage('clone repo') { 
-                  steps { 
-                        checkout scm
-                        script {
-                              sh "git rev-parse --short HEAD > .git/commit-id"                        
-                              commit_id = readFile('.git/commit-id').trim()
-                        }
-                  }
-            }
+      //      stage('clone repo') { 
+      //            steps { 
+     //                   checkout scm
+       //                 script {
+         //                     sh "git rev-parse --short HEAD > .git/commit-id"                        
+           //                   commit_id = readFile('.git/commit-id').trim()
+             //           }
+             //     }
+           // }
             stage('maven build') { 
                   steps { 
                         sh "mvn -B -DskipTests clean package"
@@ -28,7 +28,8 @@ pipeline {
                         echo "Building and pushing the docker image into my dockerhub"
                         script { 
                               docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') { 
-                              def app = docker.build("nancyrheniusbenny/demo:${commit_id}", '.').push()
+                              def app = docker.build("nancyrheniusbenny/demo", '.')
+                              app.push()
                               }
                         }
                   }
