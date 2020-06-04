@@ -1,7 +1,8 @@
 pipeline { 
       environment { 
             registry = "nancyrheniusbenny/demo"
-            registryCredentials = 'dockerhub'
+            registryCredential = 'dockerhub'
+            dockerImage = ''
       }
       agent { 
             docker { 
@@ -25,7 +26,10 @@ pipeline {
                              // docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') { 
                              // def app = docker.build("nancyrheniusbenny/demo", '.')
                               //app.push()
-                               docker.build registry + ":$BUILD_NUMBER"
+                               dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                               docker.withRegistry('', 'dockerhub') { 
+                               dockerImage.push()
+                               }
                           }
                      }
                }
