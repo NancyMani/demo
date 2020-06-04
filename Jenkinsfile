@@ -29,7 +29,7 @@ pipeline {
                              //  dockerImage = docker.build registry + ":$BUILD_NUMBER"
                              //  docker.withRegistry('', 'dockerhub') { 
                              //  dockerImage.push()
-                              // }
+                               }
                           }
                      }
                }
