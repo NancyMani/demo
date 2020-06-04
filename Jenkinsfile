@@ -1,4 +1,8 @@
 pipeline { 
+      environment { 
+            registry = "nancyrheniusbenny/demo"
+            registryCredentials = 'dockerhub'
+      }
       agent { 
             docker { 
                   image 'maven:3-alpine'
@@ -13,14 +17,15 @@ pipeline {
                         
                   }
             }
-            stage('build image and push image') { 
+            stage('building image') { 
                //  agent { dockerfile true }
                   steps { 
                         echo "Building and pushing the docker image into my dockerhub"
                         script { 
-                              docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') { 
-                              def app = docker.build("nancyrheniusbenny/demo", '.')
-                              app.push()
+                             // docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') { 
+                             // def app = docker.build("nancyrheniusbenny/demo", '.')
+                              //app.push()
+                               docker.build registry + ":$BUILD_NUMBER"
                               }
                         }
                   }
