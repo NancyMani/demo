@@ -1,3 +1,4 @@
+def commit_id
 pipeline { 
       agent { 
             docker { 
@@ -6,7 +7,6 @@ pipeline {
             }
       }
       stages { 
-            def commit_id
             stage('clone repo') { 
                   steps { 
                         checkout scm
