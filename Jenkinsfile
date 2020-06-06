@@ -14,7 +14,7 @@ pipeline {
                   }
             }
             stage('building image') { 
-                agent { dockerfile true }
+               
                   steps { 
                      
                         script { 
