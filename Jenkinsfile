@@ -18,7 +18,7 @@ pipeline {
                   steps { 
                      
                         script { 
-                              docker.withRegistry('', 'dockerhub') { 
+                              docker.withRegistry('https://registry.example.com', 'dockerhub') { 
                               def app = docker.build("nancyrheniusbenny/demo:${BUILD_NUMBER}")
                               app.push()
                               
